@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import "./App.css";
+import PokemonGrid from "./components/PokemonGrid";
 
 class App extends React.Component {
   state = {
@@ -66,21 +67,7 @@ class App extends React.Component {
         <div className="app">
           <header className="app-header">Pokedex app</header>
 
-          <div className="pokemons-grid">
-            {pokemons.map(item => (
-              <figure className="grid-pokemon">
-                <figcaption>
-                  <p className="name-pokemon">{item.name}</p>
-                </figcaption>
-                <div key={item.name}>
-                  <img src={item.photo} alt={item.name} />
-                </div>
-                <figcaption>
-                  <p>{item.arrayTypes.map(i => ` ${i} `)}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <PokemonGrid pokemons={pokemons} />
         </div>
       );
     }
