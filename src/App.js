@@ -63,22 +63,22 @@ class App extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
-          <header className="app-header">
-            <p>pokedex app under construction</p>
-          </header>
+        <div className="app">
+          <header className="app-header">Pokedex app</header>
 
-          <div className="github-profile">
+          <div className="pokemons-grid">
             {pokemons.map(item => (
-              <div key={item.name} className="github-profile">
-                <img src={item.photo} alt={item.name} />
-                <div className="info">
-                  <div className="name">{item.name}</div>
-                  <div className="name">
-                    {item.arrayTypes.map(i => `${i} `)}
-                  </div>
+              <figure className="grid-pokemon">
+                <figcaption>
+                  <p className="name-pokemon">{item.name}</p>
+                </figcaption>
+                <div key={item.name}>
+                  <img src={item.photo} alt={item.name} />
                 </div>
-              </div>
+                <figcaption>
+                  <p>{item.arrayTypes.map(i => ` ${i} `)}</p>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>

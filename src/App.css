@@ -1,3 +1,44 @@
+
+.app {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #282c34;
+  min-height: 16vh;
+  display: flex; /*Specifies the display behavior, type of the rendering box*/
+  flex-direction: column; /*Specifies the direction of the flexible items*/
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.pokemons-grid {
+  display: flex;
+  flex-wrap: wrap; /*specifies whether the flexible items should wrap or not*/
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-pokemon{ 
+  flex-basis: calc(10% - 4rem); /*specifies the initial length of a flexible item.*/
+  flex-grow: 1; /*specifies how much the item will grow relative to the rest of the flexible items inside the same container.*/
+  flex-shrink: 0; /*specifies how the item will shrink relative to the rest of the flexible items inside the same container.*/
+  margin: 0 2rem 2rem 2rem;
+  padding: 2rem;
+  border: 1px solid lightgray;
+  background: white;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.03);;
+  position: relative;
+}
+
+.name-pokemon{
+  font-size: calc(10px + 2vmin);
+  color: #215cd3;
+}
+
+
 /* .App {
   text-align: center;
 }
