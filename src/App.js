@@ -53,7 +53,7 @@ class App extends React.Component {
           pokemons: arrayPokemons
         });
       });
-      console.log(arrayPokemons);
+      //console.log(arrayPokemons);
     });
   };
 
