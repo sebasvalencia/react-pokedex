@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import "./App.css";
 import PokemonGrid from "./components/PokemonGrid";
+import NotFound from './components/NotFound'
 
 class App extends React.Component {
   state = {
@@ -35,15 +36,19 @@ class App extends React.Component {
         const name = res.data.forms[0].name;
         const photo = res.data.sprites.front_default;
         const types = res.data.types;
+        const id = res.data.id;
+        const height = res.data.height;
+        const weight = res.data.weight;
         const arrayTypes = [];
-        //console.log(types);
         types.map(typeOfPower => {
-          //console.log(typeOfPower.type.name);
           arrayTypes.push(typeOfPower.type.name);
         });
         const pokemonObject = {
           name,
           photo,
+          id,
+          height,
+          weight,
           arrayTypes
         };
 
@@ -53,7 +58,7 @@ class App extends React.Component {
           pokemons: arrayPokemons
         });
       });
-      //console.log(arrayPokemons);
+      console.log(arrayPokemons);
     });
   };
 
