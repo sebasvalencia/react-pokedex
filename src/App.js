@@ -70,7 +70,6 @@ class App extends React.Component {
     } else {
       return (
         <div className="app">
-          <header className="app-header">Pokedex app</header>
 
           <PokemonGrid pokemons={pokemons} />
         </div>
