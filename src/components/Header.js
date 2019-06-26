@@ -4,12 +4,12 @@ import { withRouter } from "react-router";
 class Header extends React.Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/">
             Pokedex app
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarText"
@@ -17,17 +17,17 @@ class Header extends React.Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon" />
         </button>
-        <div class="collapse navbar-collapse" id="navbarText">
+        <div className="collapse navbar-collapse" id="navbarText">
           
-          <span class="navbar-text">
-            <a class="nav-link" href="/">
+          <span className="navbar-text">
+            <a className="nav-link" href="/">
               Home
             </a>
           </span>
-          <span class="navbar-text">
-            <a class="nav-link" href="/">
+          <span className="navbar-text">
+            <a className="nav-link" href="/">
               Logout
             </a>
           </span>

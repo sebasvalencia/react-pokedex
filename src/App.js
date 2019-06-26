@@ -2,14 +2,14 @@ import React from "react";
 import Axios from "axios";
 import "./App.css";
 import PokemonGrid from "./components/PokemonGrid";
-import NotFound from './components/NotFound'
 
 class App extends React.Component {
   state = {
     error: null,
     isLoaded: false,
     pokemons: [],
-    urlPokemons: []
+    urlPokemons: [],
+    filtratePokemons: []
   };
 
   componentWillMount() {
@@ -33,12 +33,9 @@ class App extends React.Component {
     const arrayPokemons = [];
     arrayPokemosUrl.map(pokemon => {
       Axios.get(pokemon.url).then(res => {
+        const { id, types, height, weight } = res.data;
         const name = res.data.forms[0].name;
         const photo = res.data.sprites.front_default;
-        const types = res.data.types;
-        const id = res.data.id;
-        const height = res.data.height;
-        const weight = res.data.weight;
         const arrayTypes = [];
         types.map(typeOfPower => {
           arrayTypes.push(typeOfPower.type.name);
@@ -55,23 +52,55 @@ class App extends React.Component {
         arrayPokemons.push(pokemonObject);
         this.setState({
           isLoaded: true,
-          pokemons: arrayPokemons
+          pokemons: arrayPokemons,
+          filtratePokemons: arrayPokemons
         });
       });
-      console.log(arrayPokemons);
+      //console.log(arrayPokemons);
+    });
+  };
+
+  filterPokemons = event => {
+    let updatedPokemons = this.state.pokemons;
+    const valueToSearch = event.target.value;
+    if (valueToSearch !== "") {
+      const pattern = new RegExp(valueToSearch);
+
+      updatedPokemons = updatedPokemons.filter(item => {
+        return (
+          pattern.test(item.name.toLowerCase()) !== false ||
+          pattern.test(item.arrayTypes.toString().toLowerCase()) !== false
+        );
+      });
+    } else {
+      updatedPokemons = this.state.pokemons;
+    }
+
+    this.setState({
+      filtratePokemons: updatedPokemons
     });
   };
 
   render() {
-    const { isLoaded, pokemons } = this.state;
-
+    const { isLoaded, filtratePokemons } = this.state;
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
         <div className="app">
-
-          <PokemonGrid pokemons={pokemons} />
+          <form>
+            <fieldset className="form-group">
+              <input
+                type="text"
+                className="form-control-search form-control-lg"
+                placeholder="Search..."
+                onChange={this.filterPokemons}
+              />
+            </fieldset>
+          </form>
+          <div className="">
+            <PokemonGrid pokemons={filtratePokemons} />
+          </div>
         </div>
       );
     }

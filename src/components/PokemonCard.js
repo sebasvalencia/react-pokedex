@@ -20,7 +20,7 @@ class PokemonCard extends React.Component {
           </Link>
         </div>
         <figcaption>
-          <p>{arrayTypes.map(i => ` ${i} `)}</p>
+          <p>{arrayTypes.toString()}</p>
         </figcaption>
       </figure>
     );

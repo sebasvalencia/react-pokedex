@@ -87,3 +87,14 @@ label {
   padding: 2rem;
 }
 
+.form-control-search {
+  width: 80%;
+  margin: auto;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border: 1px solid lightgray;
+  background: white;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.03);
+}
+
