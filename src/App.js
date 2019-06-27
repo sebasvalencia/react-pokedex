@@ -2,6 +2,8 @@ import React from "react";
 import Axios from "axios";
 import "./App.css";
 import PokemonGrid from "./components/PokemonGrid";
+import Login from "./components/Login";
+import Header from "./components/Header";
 
 class App extends React.Component {
   state = {
@@ -9,11 +11,19 @@ class App extends React.Component {
     isLoaded: false,
     pokemons: [],
     urlPokemons: [],
-    filtratePokemons: []
+    filtratePokemons: [],
+    email: "",
+    password: "",
+    isLogin: false
   };
 
-  componentWillMount() {
-    console.log("MOUNTED!!");
+  componentDidMount() {
+    console.log("MOUNTED!");
+    this.setState({
+      email: this.props.location.state.email,
+      password: this.props.location.state.password,
+      isLogin: true
+    });
     this.getPokemonsUrls();
   }
 
@@ -82,27 +92,34 @@ class App extends React.Component {
   };
 
   render() {
-    const { isLoaded, filtratePokemons } = this.state;
+    const { isLoaded, filtratePokemons, isLogin, email, password } = this.state;
+
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      return (
-        <div className="app">
-          <form>
-            <fieldset className="form-group">
-              <input
-                type="text"
-                className="form-control-search form-control-lg"
-                placeholder="Search..."
-                onChange={this.filterPokemons}
-              />
-            </fieldset>
-          </form>
-          <div className="">
-            <PokemonGrid pokemons={filtratePokemons} />
+      if (!isLogin) {
+        return <Login handleLogin={this.handleLogin} />;
+      } else {
+        return (
+          <div className="app">
+            <Header />
+            <form>
+              <fieldset className="form-group">
+                <input
+                  type="text"
+                  className="form-control-search form-control-lg"
+                  placeholder="Search..."
+                  onChange={this.filterPokemons}
+                />
+              </fieldset>
+            </form>
+            <div className="">
+              <PokemonGrid pokemons={filtratePokemons} isLogin={isLogin} email={email} password={password} />
+            </div>
+            }
           </div>
-        </div>
-      );
+        );
+      }
     }
   }
 }

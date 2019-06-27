@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 class PokemonDetails extends React.Component {
   render() {
-    console.log(this.props.location.state.pokemon);
 
     const {
       name,
@@ -38,7 +37,17 @@ class PokemonDetails extends React.Component {
         </div>
 
         <div className="footer">
-          <Link to={`/`}>Home</Link>
+          <Link
+            to={{
+              pathname: `/app`,
+              state: {
+                email: this.props.location.state.email,
+                password: this.props.location.state.password
+              }
+            }}
+          >
+            Home
+          </Link>
         </div>
       </div>
     );
