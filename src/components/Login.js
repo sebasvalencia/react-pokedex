@@ -19,7 +19,8 @@ class Login extends React.Component {
     }
   };
 
-  handleCancel = () => {
+  handleCancel = (event) => {
+    event.preventDefault();
     this.emailRef.current.value = "";
     this.passwordRef.current.value = "";
   };
