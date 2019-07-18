@@ -2,6 +2,8 @@ import React from "react";
 
 class Login extends React.Component {
   state = {
+    email: "",
+    password: "",
     isHidden: true
   };
 
@@ -11,6 +13,15 @@ class Login extends React.Component {
   coachEmailRef = React.createRef();
   coachPasswordRef = React.createRef();
   coachConfirmPasswordRef = React.createRef();
+
+  handleChange = () => {
+    const email = this.emailRef.current.value;
+    const password = this.passwordRef.current.value;
+    this.setState({
+      email,
+      password
+    });
+  };
 
   handleLogin = event => {
     event.preventDefault();
@@ -27,9 +38,11 @@ class Login extends React.Component {
           pathname: "app",
           state: { email: email, password: password }
         });
+      }else{
+        alert("Error in email or password, try again");
       }
     } else {
-      alert('Error in the login, please try again');
+      alert("Error in the login, please try again");
     }
   };
 
@@ -73,6 +86,7 @@ class Login extends React.Component {
             placeholder="Password"
             type="text"
             ref={this.passwordRef}
+            onChange={this.handleChange}
           />
           <div className="center-block text-center">
             <button
@@ -85,6 +99,7 @@ class Login extends React.Component {
               className="btn btn-outline-primary"
               type="submit"
               onClick={this.handleLogin}
+              disabled={!this.state.email && !this.state.password}
             >
               Login
             </button>
@@ -102,7 +117,6 @@ class Login extends React.Component {
     } else {
       return !this.state.isHidden && <this.FormCreateCoach />;
     }
-    
   }
 
   FormCreateCoach = () => (
