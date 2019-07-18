@@ -9,6 +9,7 @@ class Login extends React.Component {
 
   emailRef = React.createRef();
   passwordRef = React.createRef();
+
   coachNameRef = React.createRef();
   coachEmailRef = React.createRef();
   coachPasswordRef = React.createRef();
@@ -67,6 +68,9 @@ class Login extends React.Component {
 
   handleCreateCoach = event => {
     event.preventDefault();
+    localStorage.setItem('nameCoach',this.coachNameRef.current.value);
+    localStorage.setItem('emailCoach',this.coachEmailRef.current.value);
+    event.currentTarget.reset();
   };
 
   render() {
@@ -120,7 +124,7 @@ class Login extends React.Component {
   }
 
   FormCreateCoach = () => (
-    <form className="container login">
+    <form className="container login" onSubmit={this.handleCreateCoach}>
       <input
         className="form-control"
         name="coachName"
@@ -162,7 +166,6 @@ class Login extends React.Component {
       <button
         className="btn btn-outline-primary"
         type="submit"
-        onClick={this.handleCreateCoach}
       >
         Create
       </button>
