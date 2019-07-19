@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">
-            Pokedex app
+          Pokedex app
         </a>
         <button
           className="navbar-toggler"
@@ -23,13 +23,15 @@ class Header extends React.Component {
           
           <span className="navbar-text">
             <a className="nav-link" href="/">
-              Home
+              Logout
             </a>
           </span>
           <span className="navbar-text">
-            <a className="nav-link" href="/">
-              Logout
-            </a>
+            {
+              <a className="nav-link" href="/">
+                {this.props.userName}
+              </a>
+            }
           </span>
         </div>
       </nav>

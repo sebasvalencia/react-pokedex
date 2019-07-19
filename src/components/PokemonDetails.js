@@ -42,7 +42,6 @@ class PokemonDetails extends React.Component {
               pathname: `/app`,
               state: {
                 email: this.props.location.state.email,
-                password: this.props.location.state.password
               }
             }}
           >

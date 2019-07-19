@@ -37,7 +37,7 @@ class Login extends React.Component {
       if (emailValue === email && passwordValue === password) {
         this.props.history.push({
           pathname: "app",
-          state: { email: email, password: password }
+          state: { email: email }
         });
       }else{
         alert("Error in email or password, try again");
@@ -70,6 +70,12 @@ class Login extends React.Component {
     event.preventDefault();
     localStorage.setItem('nameCoach',this.coachNameRef.current.value);
     localStorage.setItem('emailCoach',this.coachEmailRef.current.value);
+
+    this.props.history.push({
+      pathname: "app",
+      state: { email: this.coachEmailRef.current.value }
+    });
+
     event.currentTarget.reset();
   };
 

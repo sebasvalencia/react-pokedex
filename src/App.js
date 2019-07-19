@@ -14,16 +14,19 @@ class App extends React.Component {
     filtratePokemons: [],
     email: "",
     password: "",
-    isLogin: false
+    isLogin: false,
+    userName: ''
   };
 
   componentDidMount() {
     console.log("MOUNTED!");
+    const userName = localStorage.getItem('nameCoach') || '';
     this.setState({
       email: this.props.location.state.email,
-      password: this.props.location.state.password,
-      isLogin: true
+      isLogin: true,
+      userName
     });
+    console.log(this.state , localStorage.getItem('nameCoach'));
     this.getPokemonsUrls();
   }
 
@@ -92,7 +95,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { isLoaded, filtratePokemons, isLogin, email, password } = this.state;
+    const { isLoaded, filtratePokemons, isLogin, email, userName } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>;
@@ -102,7 +105,8 @@ class App extends React.Component {
       } else {
         return (
           <div className="app">
-            <Header />
+            <Header userName={userName} />
+            
             <form>
               <fieldset className="form-group">
                 <input
@@ -114,7 +118,7 @@ class App extends React.Component {
               </fieldset>
             </form>
             <div className="">
-              <PokemonGrid pokemons={filtratePokemons} isLogin={isLogin} email={email} password={password} />
+              <PokemonGrid pokemons={filtratePokemons} isLogin={isLogin} email={email}  />
             </div>
             }
           </div>

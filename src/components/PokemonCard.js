@@ -14,7 +14,6 @@ class PokemonCard extends React.Component {
               state: {
                 pokemon: this.props.pokemon,
                 email: this.props.email,
-                password: this.props.password
               }
             }}
           >

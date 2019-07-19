@@ -7,7 +7,7 @@ class PokemonGrid extends React.Component {
     return (
       <div className="pokemons-grid">
         {this.props.pokemons.map((pokemon, index) => (
-          <PokemonCard key={index} pokemon={pokemon} email={this.props.email} password={this.props.password} />
+          <PokemonCard key={index} pokemon={pokemon} email={this.props.email}  />
         ))}
       </div>
     );
